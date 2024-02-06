@@ -15,22 +15,22 @@ export const Login = ({getToken}) => {
         //     Authorization: `Basic ${encodedCredentials}`,
         // };
         const url = 'http://localhost:5000'; // Replace with your actual API URL
-                fetch(`${url}/api/user/gettoken`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        'email': userid,
-                        'password': password
-                    })
-                    }).then( response => response.ok ? response.json() : null)
-                    .then(message => {
-                        debugger
-                        if (message !== null) { 
-                         console.log(message);
-                         getToken(userid, message.token.token)}
-                    }).catch( error => console.log(error)) 
+        fetch(`${url}/api/user/gettoken`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'email': userid,
+                'password': password
+            })
+            }).then( response => response.ok ? response.json() : null)
+            .then(message => {
+                debugger
+                if (message !== null) { 
+                    console.log(message);
+                    getToken(userid, message.token.token)}
+            }).catch( error => console.log(error)) 
     }
        
     return (

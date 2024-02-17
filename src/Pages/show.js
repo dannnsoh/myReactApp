@@ -28,22 +28,22 @@ export const ShowPage = () => {
     // const token = token;
     debugger
     if (token) {
-    const encodedCredentials = btoa(`${userid}:${token}`);
-    // Create the headers object with the authorization header
-    const headers = {
-      Authorization: `Basic ${encodedCredentials}`,
-    };
+        const encodedCredentials = btoa(`${userid}:${token}`);
+        // Create the headers object with the authorization header
+        const headers = {
+          Authorization: `Basic ${encodedCredentials}`,
+        };
 
-    // Send the POST request
-    const url = 'http://localhost:5000'; // Replace with your actual API URL
-    fetch(`${url}/api/package/getAllPackages`, {
-        method: 'POST',
-        headers: headers,
-    }).then(response => response.json())
-      .then(message => {
-        debugger
-        setLoadedPosts(message.data)})}}, 
-    [token, userid]);
+        // Send the POST request
+        const url = 'http://localhost:5000'; // Replace with your actual API URL
+        fetch(`${url}/api/package/getAllPackages`, {
+            method: 'POST',
+            headers: headers,
+        }).then(response => response.json())
+          .then(message => {
+            debugger
+            setLoadedPosts(message.data)})}}, 
+        [token, userid]);
 
   // debugger
   return (

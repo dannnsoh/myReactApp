@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import { ShowPage } from './Pages/show';
+import { ShowPageOM } from './Pages/showOM';
 
 import {
   BrowserRouter as Router,
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<ShowPage />} />
+          <Route path="/OM" element={<ShowPageOM />} />
         </Routes>
       </Router>
     </div>

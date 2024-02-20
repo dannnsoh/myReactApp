@@ -17,12 +17,12 @@ export const ImageComponent = ({ blob, hotel}) => {
     <>
         <div className="container" >
         <div className="card" >
-            <div className="card-body mt-5 mx-auto mb-5 transparent-border" >
+            <div className="card-body mt-1 mx-auto mb-5 transparent-border" >
                 <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>The Static Map of {hotel}</h1>
                 <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>Retrieved from OneMap API</h1>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <div style={{width: '80%', height: 'auto' }}>
-                <img src={url} className="img-fluid" alt="Responsive image" style={{width: '100%', height: 'auto'}} />
+                <img src={url} className="img-fluid" alt="Responsive image" style={{width: '70%', height: 'auto'}} />
                 </div>
                 </div>
             </div>

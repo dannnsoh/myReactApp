@@ -51,9 +51,9 @@ export const LoginOM = ({getToken}) => {
 
     return (
         <div className="container">
-            <div className="card mt-5 mx-auto mb-5 transparent-border" >
+            <div className="card mt-5 mx-auto mb-1 transparent-border" >
                 <div className="card-body">
-                <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>Enter Credentials to Access <br /> OneMap APIs</h1>
+                <h1 className="display-4 text-center mb-3" style={{fontSize: '2rem'}}>Enter Credentials to Access <br /> OneMap APIs</h1>
                     <form onSubmit={handleSubmit} className="form-group" >
                         <div className="row align-items-center">
                             <label htmlFor="userid" className="col-sm-3 col-form-label">User ID:</label>

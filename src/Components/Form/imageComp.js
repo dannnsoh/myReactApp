@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const ImageComponent = ({ blob, hotel}) => {
     
@@ -10,14 +10,24 @@ export const ImageComponent = ({ blob, hotel}) => {
         return () => {
             URL.revokeObjectURL(url);
         };
-    }, [url, blob]);
+    }, [blob]);
 
     // Return the image element with conditional rendering
     return url ? (
-        <>
-            <h1>The Static Map of {hotel}</h1>
-            <h2>Retrieved from OneMap API</h2>
-            <img src={url} className="img-fluid" alt="Responsive image" />
-        </>
+    <>
+        <div className="container" >
+        <div className="card" >
+            <div className="card-body mt-5 mx-auto mb-5 transparent-border" >
+                <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>The Static Map of {hotel}</h1>
+                <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>Retrieved from OneMap API</h1>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <div style={{width: '80%', height: 'auto' }}>
+                <img src={url} className="img-fluid" alt="Responsive image" style={{width: '100%', height: 'auto'}} />
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </>
     ) : null;
 }

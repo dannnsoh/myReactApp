@@ -98,10 +98,19 @@ export const SearchOM = ({getCoord}) => {
         
 
     }
-    
+
     return (
-    <form onSubmit={handleSubmit}>
-        <input type="text" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Search by Hotel" />
-        <button type="submit">Search</button>
-    </form>)
+        <div className="container">
+            <div className="card mt-5 mx-auto mb-5" >
+            <div className="card-body">
+            <h4 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>Search Static Map from OneMap</h4>
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder="Search by Hotel" className="form-control" />
+                        <button type="submit" className="btn btn-primary mt-3">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+    
 }

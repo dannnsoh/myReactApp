@@ -1,11 +1,13 @@
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import React, {useState, useEffect} from 'react';
+// import { Button, Modal } from 'react-bootstrap';
 
 import { LoginOM } from '../Components/Form/formOM';
 import { SearchOM } from '../Components/Form/searchOM';
 import { ImageComponent } from '../Components/Form/imageComp';
 
 export const ShowPageOM = () => {
-    
+
   const [userid, setUserid] = useState([])
   const [token, setToken] = useState(null);
   const [pngdata, setPngdata] = useState(null);    
@@ -67,25 +69,23 @@ export const ShowPageOM = () => {
   debugger
   return (
     <>
-        <ul>
 
             { !token &&
               <LoginOM getToken={getToken}/>
             }
 
-            { token &&
+            { token && 
               <SearchOM getCoord={getCoord}/>
             }
 
             { pngdata && hotelName &&
-                <ImageComponent blob={pngdata} hotel={hotelName}/>
+              <ImageComponent blob={pngdata} hotel={hotelName}/>
             }
 
             { pngdata && !hotelName &&
-                <h1>Place Not Found</h1>
+                <h1 className="display-4 mt-5 animate__animated animate__tada">Place Not Found</h1>
             }
-                
-        </ul>
+
     </>
   );
 }

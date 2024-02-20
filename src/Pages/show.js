@@ -1,10 +1,10 @@
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import React, {useState, useEffect} from 'react';
 
 import { Login } from '../Components/Form/form';
 
 export const ShowPage = () => {
     
-  const [outputText, setOutputText] = useState([]);
   const [loadedPosts, setLoadedPosts] = useState([]);
   const [userid, setUserid] = useState([])
   const [token, setToken] = useState(null);
@@ -14,10 +14,6 @@ export const ShowPage = () => {
     setUserid(user);
     setToken(token);
   };
-
-  function updateTextHandler() {
-    setOutputText('Text was changed!');
-  }
 
   useEffect(function () {
      // Set the username
@@ -48,24 +44,24 @@ export const ShowPage = () => {
   // debugger
   return (
     <>
-        <button onClick={updateTextHandler}>Click to change text</button>
-        <p>{outputText}</p>
-
-        <ul>
-
+        <div className="container">
             { !token &&
               <Login getToken={getToken}/>
             }
 
             { token && loadedPosts && loadedPosts.length > 0 && (
-                <ul>
+              <div className="card-body text-center">
+            <h1 className="display-4 mt-5 animate__animated animate__tada" style={{fontSize: '2rem'}}>Listing of All Packages</h1>
+            <ul className="list-group mt-4 mb-4">
                 {loadedPosts.map((post) => (
-                    <li key={post.id}>{post.hotel_name}</li>
+                    <li key={post.id} className="list-group-item">{post.hotel_name}</li>
                 ))}
-                </ul>
+            </ul>
+            </div>
+
             )}
                 
-        </ul>
+        </div>
     </>
   );
 }

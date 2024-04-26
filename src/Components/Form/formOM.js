@@ -12,19 +12,11 @@ export const LoginOM = ({getToken}) => {
         event.preventDefault();
 
         debugger
-        // new_host = "https://www.onemap.gov.sg"
-        // url = f"{new_host}/api/auth/post/getToken"
-        // payload = {
-        //     "email": "paulwuhj@suss.edu.sg",
-        //     "password": "09338cZZ!!!!"
-        // }
-        // token = requests.request("POST", url, json=payload)
-        
+
         const url = "https://www.onemap.gov.sg"; // 
         console.log(typeof userid);
         console.log(typeof  password);
-        // const userid1 = "paulwuhj@suss.edu.sg"
-        // const password1 = "09338cZZ!!!!"
+
         const data = JSON.stringify({
             'email': userid,
             'password': password

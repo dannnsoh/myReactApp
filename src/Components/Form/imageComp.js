@@ -22,7 +22,7 @@ export const ImageComponent = ({ blob, hotel}) => {
                 <h1 className="display-4 text-center mb-4" style={{fontSize: '2rem'}}>Retrieved from OneMap API</h1>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <div style={{width: '80%', height: 'auto' }}>
-                <img src={url} className="img-fluid" alt="Responsive image" style={{width: '70%', height: 'auto'}} />
+                <img src={url} className="img-fluid" alt="Responsive" style={{width: '70%', height: 'auto'}} />
                 </div>
                 </div>
             </div>

@@ -15,6 +15,10 @@ export const ShowPage = () => {
     setToken(token);
   };
 
+  function handleClick(hotel_name) {
+    alert('You clicked on: ' + hotel_name);
+  }
+
   useEffect(function () {
      // Set the username
     //const userid = 'peter@cde.com';
@@ -53,9 +57,9 @@ export const ShowPage = () => {
               <div className="card-body text-center">
             <h1 className="display-4 mt-5 animate__animated animate__tada" style={{fontSize: '2rem'}}>Listing of All Packages</h1>
             <ul className="list-group mt-4 mb-4">
-                {loadedPosts.map((post) => (
-                    <li key={post.id} className="list-group-item">{post.hotel_name}</li>
-                ))}
+              {loadedPosts.map((post) => (
+                <li key={post.id} className="list-group-item toBeClicked" onClick={() => handleClick(post.hotel_name)}>{post.hotel_name}</li>
+              ))}
             </ul>
             </div>
 

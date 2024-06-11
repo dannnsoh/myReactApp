@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.toBeClicked {
+  cursor: pointer;
+}
+
+.toBeClicked:hover {
+  background-color: #95ee10;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

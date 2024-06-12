@@ -1,24 +1,26 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 // import { Button, Modal } from 'react-bootstrap';
 
 import { LoginOM } from '../Components/Form/formOM';
 import { SearchOM } from '../Components/Form/searchOM';
 import { ImageComponent } from '../Components/Form/imageComp';
+import { AuthContext } from '../context'; // Import the context
 
 export const ShowPageOM = () => {
 
-  const [userid, setUserid] = useState([])
-  const [token, setToken] = useState(null);
+  // const [userid, setUserid] = useState([])
+  // const [token, setToken] = useState(null);
   const [pngdata, setPngdata] = useState(null);    
   const [lat, setLat] = useState(null);   
   const [long, setLong] = useState(null);   
   const [hotelName, setHotelName] = useState('');
+  const {token, setToken, userid, setUserid, om_userid, om_setUserid, om_token, om_setToken } = useContext(AuthContext);
 
-  const getToken = (user, token) => {
+  const getToken = (user, a_token) => {
     debugger
-    setUserid(user);
-    setToken(token);
+    om_setUserid(user);
+    om_setToken(a_token);
   };
 
   const getCoord = (coord) => {
@@ -38,9 +40,9 @@ export const ShowPageOM = () => {
     // print(response.content)
 
     debugger
-    if (token && lat && long) {
+    if (om_token && lat && long) {
 
-        const encodedCredentials = btoa(`${userid}:${token}`);
+        const encodedCredentials = btoa(`${om_userid}:${om_token}`);
         // Create the headers object with the authorization header
         
         const headers = {
@@ -64,17 +66,17 @@ export const ShowPageOM = () => {
         }).then(message => {
             debugger
             setPngdata(message)})}}, 
-        [userid, token, lat, long]);
+        [om_userid, om_token, lat, long]);
 
   debugger
   return (
     <>
 
-            { !token &&
+            { !om_token &&
               <LoginOM getToken={getToken}/>
             }
 
-            { token && 
+            { om_token && 
               <SearchOM getCoord={getCoord}/>
             }
 

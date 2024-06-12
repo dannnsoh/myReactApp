@@ -1,18 +1,20 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 
 import { Login } from '../Components/Form/form';
+import { AuthContext } from '../context'; // Import the context
 
 export const ShowPage = () => {
     
   const [loadedPosts, setLoadedPosts] = useState([]);
-  const [userid, setUserid] = useState([])
-  const [token, setToken] = useState(null);
+  // const [userid, setUserid] = useState([]);
+  // const [token, setToken] = useState(null);
+  const {token, setToken, userid, setUserid, om_userid, om_setUserid, om_token, om_setToken } = useContext(AuthContext);
 
-  const getToken = (user, token) => {
+  const getToken = (user, a_token) => {
     debugger
     setUserid(user);
-    setToken(token);
+    setToken(a_token);
   };
 
   function handleClick(hotel_name) {
@@ -20,12 +22,8 @@ export const ShowPage = () => {
   }
 
   useEffect(function () {
-     // Set the username
-    //const userid = 'peter@cde.com';
-    // const username = userid;
-    // Construct the basic authentication string
-    //const token = 'sha256$bi7DWbEBHzAD5E23$aaa0b760dde776a8088f2bd92adb73c97ae7d1387b7d5b152961e0741bb21876' ; // Replace with your actual token
-    // const token = token;
+ 
+    console.log(token);
     debugger
     if (token) {
         const encodedCredentials = btoa(`${userid}:${token}`);
@@ -40,28 +38,40 @@ export const ShowPage = () => {
             method: 'POST',
             headers: headers,
         }).then(response => response.json())
-          .then(message => {
-            debugger
-            setLoadedPosts(message.data)})}}, 
+        .then(message => {
+          console.log('API Response:', message);
+              if (Array.isArray(message.data)) {
+                  setLoadedPosts(message.data);
+              } else {
+                  console.error('Expected an array but got:', message.data);
+                  setLoadedPosts([]);
+              }
+          })
+          .catch(error => {
+                console.error('Error fetching data:', error);
+                setLoadedPosts([]);
+            });
+        }},
         [token, userid]);
 
   // debugger
   return (
     <>
         <div className="container">
-            { !token &&
+            { 
+              !token &&
               <Login getToken={getToken}/>
             }
 
             { token && loadedPosts && loadedPosts.length > 0 && (
               <div className="card-body text-center">
-            <h1 className="display-4 mt-5 animate__animated animate__tada" style={{fontSize: '2rem'}}>Listing of All Packages</h1>
-            <ul className="list-group mt-4 mb-4">
-              {loadedPosts.map((post) => (
-                <li key={post.id} className="list-group-item toBeClicked" onClick={() => handleClick(post.hotel_name)}>{post.hotel_name}</li>
-              ))}
-            </ul>
-            </div>
+              <h1 className="display-4 mt-5 animate__animated animate__tada" style={{fontSize: '2rem'}}>Listing of All Packages</h1>
+                <ul className="list-group mt-4 mb-4">
+                  {loadedPosts.map((post) => (
+                    <li key={post.id} className="list-group-item toBeClicked" onClick={() => handleClick(post.hotel_name)}>{post.hotel_name}</li>
+                  ))}
+                </ul>
+              </div>
 
             )}
                 

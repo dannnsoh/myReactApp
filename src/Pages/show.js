@@ -33,7 +33,8 @@ export const ShowPage = () => {
         };
 
         // Send the POST request
-        const url = 'http://localhost:5000'; // Replace with your actual API URL
+	const serverAddress = window.location.hostname;
+	const url = 'http://' +serverAddress+ ":5000";
         fetch(`${url}/api/package/getAllPackages`, {
             method: 'POST',
             headers: headers,
